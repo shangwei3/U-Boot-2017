@@ -71,11 +71,13 @@ int usb_init(void)
 		memset(&usb_dev[i], 0, sizeof(struct usb_device));
 		usb_dev[i].devnum = -1;
 	}
-
+	printf("USB Init\n\n\n");
+	
+	printf("	AT %20s() %6d %s",__FUNCTION__,__LINE__,__FILE__);
 	/* init low_level USB */
 	for (i = 0; i < CONFIG_USB_MAX_CONTROLLER_COUNT; i++) {
 		/* init low_level USB */
-		printf("USB%d:   ", i);
+		printf("init low_level USB %d:   ", i);
 		ret = usb_lowlevel_init(i, USB_INIT_HOST, &ctrl);
 		if (ret == -ENODEV) {	/* No such device. */
 			puts("Port not available.\n");
@@ -93,6 +95,7 @@ int usb_init(void)
 		 */
 		controllers_initialized++;
 		start_index = dev_index;
+		printf("    AT %20s() %6d %s",__FUNCTION__,__LINE__,__FILE__);
 		printf("scanning bus %d for devices... ", i);
 		ret = usb_alloc_new_device(ctrl, &dev);
 		if (ret)
@@ -131,6 +134,7 @@ int usb_init(void)
 int usb_stop(void)
 {
 	int i;
+	printf("\n	AT %20s() %6d %s\n",__FUNCTION__,__LINE__,__FILE__);
 
 	if (usb_started) {
 		asynch_allowed = 1;

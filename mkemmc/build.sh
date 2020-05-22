@@ -27,5 +27,8 @@ echo "cat E4412_N.bl1.bin itop4412-spl.bin u-boot.bin > u-boot-iTOP-4412.bin"
 cat E4412_N.bl1.bin itop4412-spl.bin u-boot.bin > u-boot-iTOP-4412.bin
 ####################################################
 
+echo CP U-Boot 
+
+cp u-boot-iTOP-4412.bin ~/ftp/
 
 echo "build success !!!"

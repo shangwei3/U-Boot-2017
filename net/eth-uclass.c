@@ -396,6 +396,7 @@ int eth_initialize(void)
 	 * This is accomplished by attempting to probe each device and calling
 	 * their write_hwaddr() operation.
 	 */
+	printf(" eth_initialize 2\n");
 	uclass_first_device(UCLASS_ETH, &dev);
 	if (!dev) {
 		printf("No ethernet found.\n");

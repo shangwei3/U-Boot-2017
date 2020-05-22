@@ -238,6 +238,7 @@ int eth_unregister(struct eth_device *dev)
 int eth_initialize(void)
 {
 	int num_devices = 0;
+	printf(" eth_initialize 2\n");
 
 	eth_devices = NULL;
 	eth_current = NULL;

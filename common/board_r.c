@@ -587,16 +587,15 @@ static int initr_bbmii(void)
 #ifdef CONFIG_CMD_NET
 static int initr_net(void)
 {
-	//printf("do_usb_start() \n");
+#if 1
 	do_usb_start();
-	//printf("usb_stop() \n");
 	usb_stop();
-	//printf("do_usb_start() \n");
 	do_usb_start();
-	puts("Net:   ");
+#endif
+	puts("Init Net:   ");
 	eth_initialize();
 #if defined(CONFIG_RESET_PHY_R)
-	debug("Reset Ethernet PHY\n");
+	printf("Reset Ethernet PHY\n");
 	reset_phy();
 #endif
 	return 0;
@@ -682,7 +681,7 @@ static int run_main_loop(void)
 	sandbox_main_loop_init();
 #endif
 	/* main_loop() can return to retry autoboot, if so just run it again */
-	printf("\n  WYM U-Boot-2017 \n\n");
+	printf("\n  run_main_loop \n\n");
 	for (;;)
 		main_loop();
 	return 0;
@@ -920,7 +919,6 @@ void board_init_r(gd_t *new_gd, ulong dest_addr)
 
 	if (initcall_run_list(init_sequence_r))
 		hang();
-	printf("\n\n======================================= 1 \n\n");
 	/* NOTREACHED - run_main_loop() does not return */
 	hang();
 }

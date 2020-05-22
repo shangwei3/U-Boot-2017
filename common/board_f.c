@@ -159,13 +159,13 @@ static int show_dram_config(void)
 	printf("\nRAM Configuration:\n");
 	for (i = size = 0; i < CONFIG_NR_DRAM_BANKS; i++) {
 		size += gd->bd->bi_dram[i].size;
-		printf("Bank #%d: %llx ", i,
+		printf("    Bank #%d: %llx \n", i,
 		      (unsigned long long)(gd->bd->bi_dram[i].start));
 #ifdef DEBUG
 		print_size(gd->bd->bi_dram[i].size, "\n");
 #endif
 	}
-	printf("\nDRAM:  ");
+	printf("\n    DRAM:  ");
 #else
 	size = gd->ram_size;
 #endif
@@ -908,8 +908,8 @@ void board_init_f(ulong boot_flags)
 	if (initcall_run_list(init_sequence_f))
 		hang();
 
-	printf("\n\n --------------------------999\n");
- 	printf("|    WYM U-Boot-2017       |\n");
+	printf("\n\n --------------------------\n");
+ 	printf("|    WYM U-Boot-2017 2      |\n");
 	printf(" --------------------------\n\n");
 
 #if !defined(CONFIG_ARM) && !defined(CONFIG_SANDBOX) && \

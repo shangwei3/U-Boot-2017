@@ -212,9 +212,9 @@ static void usb_scan_bus(struct udevice *bus, bool recurse)
 	priv = dev_get_uclass_priv(bus);
 
 	assert(recurse);	/* TODO: Support non-recusive */
-
+	
 	printf("scanning bus %d for devices... ", bus->seq);
-	debug("\n");
+	printf("\n");
 	ret = usb_scan_device(bus, 0, USB_SPEED_FULL, &dev);
 	if (ret)
 		printf("failed, error %d\n", ret);

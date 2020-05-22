@@ -90,10 +90,6 @@ static int bootm_find_os(cmd_tbl_t *cmdtp, int flag, int argc,
 	int ret;
 
 	/* get kernel image header, start address and length */
-	printf("    argc:%d\n",flag);
-	printf("    argv:%s\n",argv);
-	printf("    images.os.image_start:%x\n",images.os.image_start);
-	printf("    images.os.image_len:%d\n",images.os.image_len);
 	os_hdr = boot_get_kernel(cmdtp, flag, argc, argv,
 			&images, &images.os.image_start, &images.os.image_len);
 	if (images.os.image_len == 0) {

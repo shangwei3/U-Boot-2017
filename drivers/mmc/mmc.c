@@ -1834,7 +1834,6 @@ int mmc_initialize(bd_t *bis)
 	if (initialized)	/* Avoid initializing mmc multiple times */
 		return 0;
 	initialized = 1;
-	printf("   2  %20s  %s\n",__FUNCTION__,__FILE__);
 
 #if !CONFIG_IS_ENABLED(BLK)
 #if !CONFIG_IS_ENABLED(MMC_TINY)

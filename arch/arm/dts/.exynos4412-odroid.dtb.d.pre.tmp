@@ -1,6 +1,0 @@
-.exynos4412-odroid.dtb.pre.o: arch/arm/dts/.exynos4412-odroid.dtb.pre.tmp \
- include/linux/kconfig.h include/generated/autoconf.h \
- arch/arm/dts/exynos4412.dtsi arch/arm/dts/exynos4x12.dtsi \
- arch/arm/dts/exynos4.dtsi arch/arm/dts/skeleton.dtsi \
- arch/arm/dts/exynos4x12-pinctrl.dtsi \
- arch/arm/dts/exynos4x12-pinctrl-uboot.dtsi

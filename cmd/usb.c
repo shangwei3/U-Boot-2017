@@ -569,27 +569,32 @@ static int do_usb_stop_keyboard(int force)
 void do_usb_start(void)
 {
 	bootstage_mark_name(BOOTSTAGE_ID_USB_START, "usb_start");
-
-	if (usb_init() < 0)
+	if (usb_init() < 0) {
+		printf("usb_init error \n");
 		return;
+	}
+
 
 	/* Driver model will probe the devices as they are found */
-# ifdef CONFIG_USB_STORAGE
+#ifdef CONFIG_USB_STORAGE
 	/* try to recognize storage devices immediately */
+	printf("\n	  usb_stor_scan \n");
 	usb_stor_curr_dev = usb_stor_scan(1);
-# endif
+#endif
 #ifndef CONFIG_DM_USB
-# ifdef CONFIG_USB_KEYBOARD
+#ifdef CONFIG_USB_KEYBOARD
+	printf("\n	AT %20s() %6d %s\n",__FUNCTION__,__LINE__,__FILE__);
 	drv_usb_kbd_init();
-# endif
+#endif
 #endif /* !CONFIG_DM_USB */
 #ifdef CONFIG_USB_HOST_ETHER
-# ifdef CONFIG_DM_ETH
-#  ifndef CONFIG_DM_USB
-#   error "You must use CONFIG_DM_USB if you want to use CONFIG_USB_HOST_ETHER with CONFIG_DM_ETH"
-#  endif
-# else
+#ifdef CONFIG_DM_ETH
+#ifndef CONFIG_DM_USB
+# error "You must use CONFIG_DM_USB if you want to use CONFIG_USB_HOST_ETHER with CONFIG_DM_ETH"
+#endif
+#else
 	/* try to recognize ethernet devices immediately */
+	printf("\n	  usb_stor_scan \n");
 	usb_ether_curr_dev = usb_host_eth_scan(1);
 # endif
 #endif
